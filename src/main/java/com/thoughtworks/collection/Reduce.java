@@ -64,16 +64,8 @@ public class Reduce {
 
     public Double getMedianInLinkList(SingleLink singleLink) {
 //        throw new NotImplementedException();
-        int index = arrayList.size() / 2;
-        if (arrayList.size() % 2 == 0) {
+        return (arrayList.get((arrayList.size()-1)/2)+arrayList.get(arrayList.size()/2))/2.0;
 
-            return (singleLink.getNode(index) + singleLink.getNode(index + 1)) / 2.0;
-
-        } else {
-
-            return singleLink.getNode(index + 1);
-
-        }
     }
 
     public int getLastOdd() {

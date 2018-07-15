@@ -29,7 +29,15 @@ public class MyMap {
     }
 
     public List<String> mapLetters() {
-        throw new NotImplementedException();
+//        throw new NotImplementedException();
+        return array.stream().map(x->{
+            StringBuilder tmp = new StringBuilder();
+            while (x>0){
+                tmp.append(letterList.get((x-1)%26));
+                x = (x-1)/26;
+            }
+            return tmp.reverse().toString();
+        }).collect(Collectors.toList());
     }
 
     public List<Integer> sortFromBig() {
