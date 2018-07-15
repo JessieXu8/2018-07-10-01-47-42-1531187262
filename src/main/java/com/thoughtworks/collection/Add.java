@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Add {
+    private List<Integer> getEvenList(List<Integer> arrayList) {
+        return arrayList.stream().filter(num -> num % 2 == 0).collect(Collectors.toList());
+    }
     public int getSumOfEvens(int leftBorder, int rightBorder) {
         int small = leftBorder > rightBorder ? rightBorder : leftBorder;
         int big = leftBorder <rightBorder ? rightBorder : leftBorder;
@@ -42,12 +45,23 @@ public class Add {
     }
 
     public double getMedianOfEven(List<Integer> arrayList) {
-        throw new NotImplementedException();
+//        throw new NotImplementedException();
+        List<Integer> resultList = this.getEvenList(arrayList);
+        int median;
+        int size = resultList.size();
+        if (size % 2 == 0) {
+            median = (resultList.get(size / 2) + resultList.get(size / 2 - 1)) / 2;
+        } else {
+            median = resultList.get(size / 2);
+        }
+        return median;
     }
 
     public double getAverageOfEven(List<Integer> arrayList) {
 //        throw new NotImplementedException();
-        return arrayList.stream().filter(x->x%2==0).collect(Collectors.averagingLong(i->i));
+        return arrayList.stream()
+                .filter(x->x%2==0)
+                .collect(Collectors.averagingLong(i->i));
     }
 
     public boolean isIncludedInEvenIndex(List<Integer> arrayList, Integer specialElment) {
